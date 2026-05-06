@@ -1,0 +1,23 @@
+export default function Summary({ expenses, accounts }) {
+  const usdExpenses = expenses
+    .filter((e) => e.currency === "USD")
+    .reduce((a, b) => a + b.amount, 0);
+
+  const ilsExpenses = expenses
+    .filter((e) => e.currency === "ILS")
+    .reduce((a, b) => a + b.amount, 0);
+
+  return (
+    <div className="card">
+      <h3>Summary</h3>
+
+      <p>Total USD spent: {usdExpenses}</p>
+      <p>Total ILS spent: {ilsExpenses}</p>
+
+      <hr />
+
+      <p>USD Balance: {accounts.usd}</p>
+      <p>ILS Balance: {accounts.ils}</p>
+    </div>
+  );
+}
